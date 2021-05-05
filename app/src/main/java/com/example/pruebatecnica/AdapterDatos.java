@@ -52,8 +52,6 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             telefono=itemView.findViewById(R.id.telefono);
             email=itemView.findViewById(R.id.email);
             visitado=itemView.findViewById(R.id.visitado);
-
-
         }
 
         public void asignarDatos(Clientes clientes) {

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.options_id);
         checkbox=findViewById(R.id.checkBoxVisitado);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recycler.setHasFixedSize(true);
 
         listDatos = new ArrayList<>();
         listDatosFull = new ArrayList<>();
@@ -98,24 +99,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickVisitado(View v) {
+
+        listDatos.clear();
+
         if(checkbox.isChecked()){
-            for(int i=0; i<listDatos.size(); i++)
+
+            for(int i=0; i<listDatosFull.size(); i++)
             {
-                Clientes cliente = listDatos.get(i);
-                if(cliente.getVisitado().equals("Si"))
-                    listDatos.remove(i);
-
-                adapter.notifyDataSetChanged();
-
+                if(listDatosFull.get(i).getVisitado().equals("No"))
+                    listDatos.add(listDatosFull.get(i));
             }
+
         }else{
-            listDatos.clear();
             listDatos.addAll(listDatosFull);
-
-            if(orderByCode)
-                Collections.sort(listDatos, new OrdenarCodigo());
-
-            adapter.notifyDataSetChanged();
         }
+
+        if(orderByCode)
+            Collections.sort(listDatos, new OrdenarCodigo());
+
+        adapter.notifyDataSetChanged();
     }
 }
