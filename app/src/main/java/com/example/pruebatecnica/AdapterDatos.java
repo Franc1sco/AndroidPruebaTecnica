@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import static java.lang.String.*;
+
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
 
     ArrayList<Clientes> listDatos;
@@ -37,7 +39,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         return listDatos.size();
     }
 
-    public class ViewHolderDatos extends RecyclerView.ViewHolder {
+    public static class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView codigo;
         TextView nombre;
         TextView telefono;
@@ -55,7 +57,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         }
 
         public void asignarDatos(Clientes clientes) {
-            codigo.setText(clientes.getCodigo()+"");
+            codigo.setText(format("%d", clientes.getCodigo()));
             nombre.setText(clientes.getNombre());
             telefono.setText(clientes.getTelefono());
             email.setText(clientes.getEmail());
