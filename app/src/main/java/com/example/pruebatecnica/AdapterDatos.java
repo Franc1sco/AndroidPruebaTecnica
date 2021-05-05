@@ -3,8 +3,6 @@ package com.example.pruebatecnica;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> implements Filterable {
+public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
 
     ArrayList<Clientes> listDatos;
     ArrayList<Clientes> listDatosFull;
@@ -39,43 +37,6 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         return listDatos.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        return filter;
-    }
-
-    Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            String filterString = constraint.toString();
-            FilterResults results = new FilterResults();
-
-            int count = listDatosFull.size();
-            final ArrayList<Clientes> tempArray = new ArrayList<>(count);
-
-            String filterableString;
-
-            for (int i = 0; i < count; i++) {
-                filterableString = listDatosFull.get(i).getVisitado();
-                if (!filterableString.equals(filterString)) {
-                    tempArray.add(listDatosFull.get(i));
-                }
-            }
-
-            results.values = tempArray;
-            results.count = tempArray.size();
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults results) {
-            listDatos.clear();
-            listDatos = (ArrayList<Clientes>) results.values;
-            notifyDataSetChanged();
-        }
-    };
-
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView codigo;
         TextView nombre;
@@ -96,7 +57,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         }
 
         public void asignarDatos(Clientes clientes) {
-            codigo.setText(clientes.getCodigo());
+            codigo.setText(clientes.getCodigo()+"");
             nombre.setText(clientes.getNombre());
             telefono.setText(clientes.getTelefono());
             email.setText(clientes.getEmail());

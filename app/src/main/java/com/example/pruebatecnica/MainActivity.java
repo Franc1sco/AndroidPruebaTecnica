@@ -17,10 +17,13 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Clientes> listDatos;
+    ArrayList<Clientes> listDatosFull;
     RecyclerView recycler;
     AdapterDatos adapter;
     Spinner spinner;
     CheckBox checkbox;
+
+    boolean orderByCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +35,34 @@ public class MainActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         listDatos = new ArrayList<>();
+        listDatosFull = new ArrayList<>();
 
 
         for(int i=1; i<200; i++)
         {
             Random random = new Random();
 
-            listDatos.add(new Clientes(""+i, "pepe", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            listDatos.add(new Clientes(i, "pepe", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
         }
 
         for(int i=1; i<200; i++)
         {
             Random random = new Random();
 
-            listDatos.add(new Clientes(""+i, "alex", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            listDatos.add(new Clientes(i, "alex", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
         }
 
         for(int i=1; i<200; i++)
         {
             Random random = new Random();
 
-            listDatos.add(new Clientes(""+i, "miguel", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            listDatos.add(new Clientes(i, "miguel", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
         }
 
+        orderByCode = false;
         Collections.sort(listDatos, new OrdenarNombre());
+
+        listDatosFull.addAll(listDatos);
 
         adapter = new AdapterDatos(listDatos);
         recycler.setAdapter(adapter);
@@ -68,11 +75,13 @@ public class MainActivity extends AppCompatActivity {
                     case 0:{
                         Collections.sort(listDatos, new OrdenarNombre());
                         adapter.notifyDataSetChanged();
+                        orderByCode = false;
                         break;
                     }
                     case 1:{
                         Collections.sort(listDatos, new OrdenarCodigo());
                         adapter.notifyDataSetChanged();
+                        orderByCode = true;
                         break;
                     }
                     default:
@@ -90,9 +99,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickVisitado(View v) {
         if(checkbox.isChecked()){
-            adapter.getFilter().filter("Si");
+            for(int i=0; i<listDatos.size(); i++)
+            {
+                Clientes cliente = listDatos.get(i);
+                if(cliente.getVisitado().equals("Si"))
+                    listDatos.remove(i);
+
+                adapter.notifyDataSetChanged();
+
+            }
         }else{
-            adapter.getFilter().filter("");
+            listDatos.clear();
+            listDatos.addAll(listDatosFull);
+
+            if(orderByCode)
+                Collections.sort(listDatos, new OrdenarCodigo());
+
+            adapter.notifyDataSetChanged();
         }
     }
 }
