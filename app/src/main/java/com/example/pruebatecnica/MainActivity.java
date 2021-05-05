@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recycler=findViewById(R.id.recyclerView);
+        recycler = findViewById(R.id.recyclerView);
         spinner = findViewById(R.id.options_id);
-        checkbox=findViewById(R.id.checkBoxVisitado);
+        checkbox = findViewById(R.id.checkBoxVisitado);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.setHasFixedSize(true);
 
