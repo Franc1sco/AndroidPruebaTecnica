@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_main"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    >
+
+    <Spinner
+        android:id="@+id/options_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:drawSelectorOnTop="true"
+        android:prompt="@string/spin"
+        android:entries="@array/order_list"
+        />
+
+    <CheckBox
+        android:id="@+id/checkBoxVisitado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtrar visitados"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:onClick="onClickVisitado"
+        />
+
+
+</LinearLayout>

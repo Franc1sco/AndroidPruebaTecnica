@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Prueba Tecnica</string>
+    <string name="spin">Ordenar por:</string>
+
+    <string-array name="order_list">
+        <item>Nombre</item>
+        <item>Código</item>
+    </string-array>
 </resources>
