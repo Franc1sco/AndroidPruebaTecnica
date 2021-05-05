@@ -66,11 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (position)
                 {
                     case 0:{
-
+                        Collections.sort(listDatos, new OrdenarNombre());
+                        adapter.notifyDataSetChanged();
                         break;
                     }
                     case 1:{
-
+                        Collections.sort(listDatos, new OrdenarCodigo());
+                        adapter.notifyDataSetChanged();
                         break;
                     }
                     default:

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> implements Filterable {
 
@@ -20,7 +19,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
     public AdapterDatos(ArrayList<Clientes> listDatos) {
         this.listDatos = listDatos;
-        this.listDatosFull = listDatos;
+        this.listDatosFull = new ArrayList<>(listDatos);
     }
 
     @Override
@@ -51,11 +50,12 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             String filterString = constraint.toString();
             FilterResults results = new FilterResults();
 
-            final ArrayList<Clientes> tempArray = new ArrayList<>();
+            int count = listDatosFull.size();
+            final ArrayList<Clientes> tempArray = new ArrayList<>(count);
 
             String filterableString;
 
-            for (int i = 0; i < listDatosFull.size(); i++) {
+            for (int i = 0; i < count; i++) {
                 filterableString = listDatosFull.get(i).getVisitado();
                 if (!filterableString.equals(filterString)) {
                     tempArray.add(listDatosFull.get(i));
