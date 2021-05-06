@@ -2,14 +2,14 @@ package com.example.pruebatecnica.model;
 
 import java.util.Comparator;
 
-public class Clients {
+public class Client {
     private final int codigo;
     private final String nombre;
     private final String telefono;
     private final String email;
     private final String visitado;
 
-    public Clients(int codigo, String nombre, String telefono, String email, String visitado) {
+    public Client(int codigo, String nombre, String telefono, String email, String visitado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -36,16 +36,16 @@ public class Clients {
         return visitado;
     }
 
-    public static class OrderByCode implements Comparator<Clients>
+    public static class OrderByCode implements Comparator<Client>
     {
-        public int compare(Clients left, Clients right) {
+        public int compare(Client left, Client right) {
             return left.getCodigo() - right.getCodigo();
         }
     }
 
-    public static class OrderByName implements Comparator<Clients>
+    public static class OrderByName implements Comparator<Client>
     {
-        public int compare(Clients left, Clients right) {
+        public int compare(Client left, Client right) {
             return left.getNombre().compareTo(right.getNombre());
         }
     }

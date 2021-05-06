@@ -16,10 +16,10 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.pruebatecnica.data.ClientsDataSet;
-import com.example.pruebatecnica.model.Clients;
+import com.example.pruebatecnica.data.ClientDataSet;
+import com.example.pruebatecnica.model.Client;
 import com.example.pruebatecnica.R;
-import com.example.pruebatecnica.view.adapter.AdapterDatos;
+import com.example.pruebatecnica.view.adapter.ClientAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,12 +28,15 @@ import static android.Manifest.permission.CALL_PHONE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Clients> listDataAdapter;
-    private ArrayList<Clients> listDataFullAdapter;
+    private ArrayList<Client> listDataAdapter;
+    private ArrayList<Client> listDataFullAdapter;
     private RecyclerView recycler;
-    private AdapterDatos adapter;
+    private ClientAdapter adapter;
     private Spinner spinner;
     private CheckBox checkbox;
+
+    private final static int ITEM_NAME = 0;
+    private final static int ITEM_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 switch (position)
                 {
-                    case 0:{
-                        Collections.sort(listDataAdapter, new Clients.OrderByName());
+                    case ITEM_NAME:{
+                        Collections.sort(listDataAdapter, new Client.OrderByName());
                         adapter.notifyDataSetChanged();
                         break;
                     }
-                    case 1:{
-                        Collections.sort(listDataAdapter, new Clients.OrderByCode());
+                    case ITEM_CODE:{
+                        Collections.sort(listDataAdapter, new Client.OrderByCode());
                         adapter.notifyDataSetChanged();
                         break;
                     }
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(spinner.getSelectedItem().toString().equals("Codigo")){
-                Collections.sort(listDataAdapter, new Clients.OrderByCode());
+                Collections.sort(listDataAdapter, new Client.OrderByCode());
             }
 
             adapter.notifyDataSetChanged();
@@ -103,20 +106,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupAdapter()
     {
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recycler.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
         recycler.setHasFixedSize(true);
 
         listDataAdapter = new ArrayList<>();
         listDataFullAdapter = new ArrayList<>();
 
-        ClientsDataSet clientsdataset = new ClientsDataSet();
-        listDataAdapter.addAll(clientsdataset.generateClientList());
+        ClientDataSet clientDataSet = new ClientDataSet();
+        listDataAdapter.addAll(clientDataSet.generateClientList());
 
-        Collections.sort(listDataAdapter, new Clients.OrderByName());
+        Collections.sort(listDataAdapter, new Client.OrderByName());
 
         listDataFullAdapter.addAll(listDataAdapter);
 
-        adapter = new AdapterDatos(listDataAdapter);
+        adapter = new ClientAdapter(listDataAdapter);
         recycler.setAdapter(adapter);
     }
 
@@ -133,6 +137,5 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[]{CALL_PHONE}, 1);
         }
     }
-
 
 }

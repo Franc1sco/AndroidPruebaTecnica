@@ -5,18 +5,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-import com.example.pruebatecnica.model.Clients;
+import com.example.pruebatecnica.model.Client;
 import com.example.pruebatecnica.databinding.ItemListBinding;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
+public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolderDatos> {
 
-    ArrayList<Clients> listData;
+    ArrayList<Client> listData;
 
-    public AdapterDatos(ArrayList<Clients> listData) {
+    public ClientAdapter(ArrayList<Client> listData) {
         this.listData = listData;
     }
 
@@ -30,7 +30,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        Clients cliente = listData.get(position);
+        Client cliente = listData.get(position);
         holder.itemListBinding.setCliente(cliente);
         holder.itemListBinding.executePendingBindings();
     }
