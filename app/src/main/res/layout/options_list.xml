@@ -15,7 +15,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:drawSelectorOnTop="true"
-        android:prompt="@string/spin"
         android:entries="@array/order_list"
         />
 
@@ -26,7 +25,6 @@
         android:text="Filtrar visitados"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:onClick="onClickVisitado"
         />
 
 
