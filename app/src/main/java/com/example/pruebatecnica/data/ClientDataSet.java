@@ -12,25 +12,21 @@ public class ClientDataSet {
     {
         ArrayList<Client> list = new ArrayList<>();
 
-        for(int i=1; i<200; i++)
-        {
-            Random random = new Random();
+        Random random = new Random();
 
-            list.add(new Client(i, "pepe", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
+        for(int i=1; i<=200; i++)
+        {
+            list.add(new Client(i, "Pepe", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
-        for(int i=1; i<200; i++)
+        for(int i=201; i<=400; i++)
         {
-            Random random = new Random();
-
-            list.add(new Client(i, "alex", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
+            list.add(new Client(i, "Alex", "66666", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
-        for(int i=1; i<200; i++)
+        for(int i=401; i<=600; i++)
         {
-            Random random = new Random();
-
-            list.add(new Client(i, "miguel", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
+            list.add(new Client(i, "Flor", "77777", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
         return list;
