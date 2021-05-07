@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Prueba Tecnica</string>
     <string name="spin">Ordenar por:</string>
+    <string name="filtrar_visitados">Filtrar visitados</string>
 
     <string-array name="order_list">
         <item>Nombre</item>

@@ -16,21 +16,21 @@ public class ClientDataSet {
         {
             Random random = new Random();
 
-            list.add(new Client(i, "pepe", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            list.add(new Client(i, "pepe", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
         for(int i=1; i<200; i++)
         {
             Random random = new Random();
 
-            list.add(new Client(i, "alex", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            list.add(new Client(i, "alex", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
         for(int i=1; i<200; i++)
         {
             Random random = new Random();
 
-            list.add(new Client(i, "miguel", "55555", "nose@nose", random.nextBoolean()?"Si":"No"));
+            list.add(new Client(i, "miguel", "55555", "test@test.es", random.nextBoolean()?"Si":"No"));
         }
 
         return list;

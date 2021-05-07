@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:showIn="@layout/activity_main"
+    android:background="#F44336"
     android:orientation="horizontal"
     android:padding="8dp"
-    >
+    tools:showIn="@layout/activity_main">
 
     <Spinner
         android:id="@+id/options_id"
@@ -15,17 +15,15 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:drawSelectorOnTop="true"
-        android:entries="@array/order_list"
-        />
+        android:entries="@array/order_list" />
 
     <CheckBox
         android:id="@+id/checkBoxVisitado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filtrar visitados"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        />
+        android:text="@string/filtrar_visitados" />
 
 
 </LinearLayout>
