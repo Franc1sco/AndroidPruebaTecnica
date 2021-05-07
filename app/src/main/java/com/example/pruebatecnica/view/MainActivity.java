@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
     private CheckBox checkbox;
 
-    private final static int ITEM_NAME = 0;
-    private final static int ITEM_CODE = 1;
+    private static final int ITEM_NAME = 0;
+    private static final int ITEM_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

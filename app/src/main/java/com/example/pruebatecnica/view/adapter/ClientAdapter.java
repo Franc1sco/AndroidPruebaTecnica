@@ -30,8 +30,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        Client cliente = listData.get(position);
-        holder.itemListBinding.setCliente(cliente);
+        Client client = listData.get(position);
+        holder.itemListBinding.setCliente(client);
         holder.itemListBinding.executePendingBindings();
     }
 
