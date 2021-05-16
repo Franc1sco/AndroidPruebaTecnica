@@ -5,6 +5,6 @@
 
     <string-array name="order_list">
         <item>Nombre</item>
-        <item>Código</item>
+        <item>Codigo</item>
     </string-array>
 </resources>
