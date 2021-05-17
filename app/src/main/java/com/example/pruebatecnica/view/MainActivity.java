@@ -6,19 +6,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.pruebatecnica.R;
+import com.example.pruebatecnica.presenter.MainPresenterImpl;
 import com.example.pruebatecnica.presenter.MainPresenter;
-import com.example.pruebatecnica.presenter.MainView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainView presenter;
+    private final MainPresenter presenter = new MainPresenterImpl(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        presenter = new MainPresenter(this);
 
         presenter.setupView();
 
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         TextView button = (TextView)view;
         String buttonText = button.getText().toString();
 
-        presenter.showCall(buttonText);
+        presenter.doCall(buttonText);
     }
 
 }

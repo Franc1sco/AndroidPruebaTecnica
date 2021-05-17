@@ -1,6 +1,4 @@
-package com.example.pruebatecnica.data;
-
-import com.example.pruebatecnica.model.Client;
+package com.example.pruebatecnica.model;
 
 import java.util.ArrayList;
 import java.util.List;
